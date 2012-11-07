@@ -1,10 +1,14 @@
 var express = require('express');
 var app = express();
-var redis = require('redis-url').connect(process.env.WERCKER_REDIS_HOST || process.env.REDISTOGO_URL);
+var redisurl = require('redis-url');
 
-redis.sadd('decepticons', 'megatron');
-redis.sadd('decepticons', 'shockwave');
-redis.sadd('decepticons', 'atrotrain');
+
+app.configure('development', function() {
+  var redis = redisurl.connect(process.env.WERCKER_REDIS_HOST || process.env.REDISTOGO_URL);
+  redis.sadd('decepticons', 'megatron');
+  redis.sadd('decepticons', 'shockwave');
+  redis.sadd('decepticons', 'atrotrain');
+});
 
 app.get('/', function(request, response) {
   redis.smembers('decepticons', function(err, value) {
