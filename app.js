@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var redis = require('redis-url').connect();
+var redis = require('redis-url').connect(process.env.WERCKER_REDIS_HOST || process.env.REDISTOGO_URL);
 
 redis.sadd('decepticons', 'megatron');
 redis.sadd('decepticons', 'shockwave');
