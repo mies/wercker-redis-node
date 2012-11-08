@@ -4,7 +4,7 @@ var request = require('supertest')
 var app = require('../app.js')
 
 describe('GET', function(){
-    process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT
+    console.log(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT)
     it('respond with json', function(done){
       request(app)
       .get('/')
