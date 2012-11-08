@@ -4,14 +4,14 @@ var redisurl = require('redis-url');
 
 
 app.configure('development', function() {
-  var redis = redisurl.connect(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT || process.env.REDISTOGO_URL);
+  app.redis = redisurl.connect(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT || process.env.REDISTOGO_URL);
   redis.sadd('decepticons', 'megatron');
   redis.sadd('decepticons', 'shockwave');
   redis.sadd('decepticons', 'atrotrain');
 });
 
 app.get('/', function(request, response) {
-  redis.smembers('decepticons', function(err, value) {
+  app.redis.smembers('decepticons', function(err, value) {
     response.send(value);
   });
 });
