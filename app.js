@@ -5,9 +5,9 @@ var redisurl = require('redis-url');
 
 app.configure('development', function() {
   app.redis = redisurl.connect(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT || process.env.REDISTOGO_URL);
-  redis.sadd('decepticons', 'megatron');
-  redis.sadd('decepticons', 'shockwave');
-  redis.sadd('decepticons', 'atrotrain');
+  app.redis.sadd('decepticons', 'megatron');
+  app.redis.sadd('decepticons', 'shockwave');
+  app.redis.sadd('decepticons', 'atrotrain');
 });
 
 app.get('/', function(request, response) {
