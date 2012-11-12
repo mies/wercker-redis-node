@@ -2,6 +2,8 @@ var request = require('supertest')
   , express = require('express');
 
 var app = require('../app.js')
+var connectionString = process.env.WERCKER_REDIS_HOST
+app.redis = redisurl.connect(connectionString);
 
 describe('Home', function(){
   console.log('print nodeenv')
