@@ -5,7 +5,7 @@ var redisurl = require('redis-url');
 
 app.configure('development', function() {
   console.log(process.env.WERCKER_REDIS_HOST)
-  console.log(process.env.WERCKER_REDIS_POST)
+  console.log(process.env.WERCKER_REDIS_PORT)
   app.redis = redisurl.connect(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT || process.env.REDISTOGO_URL);
   //app.redis = redisurl.connect();
   app.redis.sadd('decepticons', 'megatron');
@@ -19,6 +19,9 @@ app.get('/', function(request, response) {
 
 app.get('/decepticons.json', function(request, response) {
   app.redis.smembers('decepticons', function(err, value) {
+    if (err) {
+      console.log(err);
+    }
     response.writeHead(200, { 'Content-Type': 'application/json' });
     console.log(value)
     response.write(JSON.stringify(value));
