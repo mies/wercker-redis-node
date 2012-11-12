@@ -10,6 +10,7 @@ app.configure('development', function() {
   app.redis.sadd('decepticons', 'megatron');
   app.redis.sadd('decepticons', 'shockwave');
   app.redis.sadd('decepticons', 'astrotrain');
+  console.log('asdsad')
 });
 
 app.get('/', function(request, response) {
