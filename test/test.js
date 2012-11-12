@@ -4,6 +4,8 @@ var request = require('supertest')
 var app = require('../app.js')
 
 describe('Home', function(){
+  console.log('print nodeenv')
+  console.log(process.env.NODE_ENV)
       it('respond with hello cybertron', function(done){
       request(app)
       .get('/')
