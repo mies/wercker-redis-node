@@ -18,7 +18,7 @@ app.configure('production', function() {
 })
 */
 
-var connectionString = process.env.WERCKER_REDIS_HOST +':' + process.env.WERCKER_REDIS_PORT
+var connectionString = process.env.WERCKER_REDIS_HOST
 var redis = redisurl.connect(connectionString);
 redis.sadd('decepticons', 'megatron');
 redis.sadd('decepticons', 'shockwave');

@@ -14,7 +14,6 @@ describe('Home', function(){
 });
 
 describe('Decepticons', function(){
-      console.log(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT)
       it('respond with json', function(done){
       request(app)
       .get('/decepticons.json')
