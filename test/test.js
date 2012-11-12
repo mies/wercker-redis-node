@@ -4,9 +4,8 @@ var request = require('supertest')
 var app = require('../app.js')
 
 describe('GET', function(){
-    console.log(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT)
-    console.log(process.env.REDISTOGO_URL);
-    it('respond with json', function(done){
+      console.log(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT)
+      it('respond with json', function(done){
       request(app)
       .get('/decepticons.json')
       .set('Accept', 'application/json')
