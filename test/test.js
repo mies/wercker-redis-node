@@ -1,5 +1,5 @@
 var request = require('supertest')
-  , express = require('express');
+  , express = require('express')
   , redisurl = require('redis-url');
 
 var app = require('../app.js')
