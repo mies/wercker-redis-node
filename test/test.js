@@ -1,5 +1,6 @@
 var request = require('supertest')
   , express = require('express');
+  , redisurl = require('redis-url');
 
 var app = require('../app.js')
 var connectionString = process.env.WERCKER_REDIS_HOST
