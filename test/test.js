@@ -3,7 +3,15 @@ var request = require('supertest')
 
 var app = require('../app.js')
 
-describe('GET', function(){
+describe('Home', function(){
+      it('respond with hello cybertron', function(done){
+      request(app)
+      .get('/')
+      .expect(200, done);
+  });
+});
+
+describe('Decepticons', function(){
       console.log(process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT)
       it('respond with json', function(done){
       request(app)

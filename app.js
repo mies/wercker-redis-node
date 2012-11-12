@@ -4,8 +4,6 @@ var redisurl = require('redis-url');
 
 
 app.configure('development', function() {
-  console.log(process.env.WERCKER_REDIS_HOST)
-  console.log(process.env.WERCKER_REDIS_PORT)
   var connectionString = process.env.WERCKER_REDIS_HOST +':' + process.env.WERCKER_REDIS_PORT
   app.redis = redisurl.connect(connectionString | process.env.REDISTOGO_URL);
   //app.redis = redisurl.connect();
@@ -15,7 +13,7 @@ app.configure('development', function() {
 });
 
 app.get('/', function(request, response) {
-  res.send('Hello Cybertron!');
+  response.send('Hello Cybertron!');
 });
 
 app.get('/decepticons.json', function(request, response) {
