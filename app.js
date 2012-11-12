@@ -11,8 +11,14 @@ app.configure('development', function() {
 });
 
 app.get('/', function(request, response) {
+  res.send('Hello Cybertron!');
+});
+
+app.get('/decepticons.json', function(request, response) {
   app.redis.smembers('decepticons', function(err, value) {
-    response.send(value);
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.write(value);
+    response.end();
   });
 });
 
