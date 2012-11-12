@@ -17,7 +17,8 @@ app.get('/', function(request, response) {
 app.get('/decepticons.json', function(request, response) {
   app.redis.smembers('decepticons', function(err, value) {
     response.writeHead(200, { 'Content-Type': 'application/json' });
-    response.write(value);
+    console.log(value)
+    response.write(JSON.stringify(value));
     response.end();
   });
 });
