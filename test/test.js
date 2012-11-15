@@ -12,12 +12,12 @@ describe("Decepticons", function() {
     var host = process.env.WERCKER_REDIS_HOST;
 
     //var redis = redisurl.connect(connectionString);
-    var redis = redis.createClient(process.env.WERCKER_REDIS_HOST, process.env.WERCKER_REDIS_PORT);
-    redis.sadd('decepticons', 'megatron');
-    redis.sadd('decepticons', 'shockwave');
-    redis.sadd('decepticons', 'astrotrain');
+    var client = redis.createClient(process.env.WERCKER_REDIS_HOST, process.env.WERCKER_REDIS_PORT);
+    client.sadd('decepticons', 'megatron');
+    client.sadd('decepticons', 'shockwave');
+    client.sadd('decepticons', 'astrotrain');
 
-    redis.smembers('decepticons', function(err, value) {
+    client.smembers('decepticons', function(err, value) {
     if (err) {
       console.log(err);
     }
