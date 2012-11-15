@@ -1,4 +1,4 @@
-var redisurl = require('redis-url')
+var redis = require('redis-url')
   , should = require('should');
 
 
@@ -11,7 +11,8 @@ describe("Decepticons", function() {
     var connectionString = process.env.WERCKER_REDIS_HOST + ':' + process.env.WERCKER_REDIS_PORT;
     var host = process.env.WERCKER_REDIS_HOST;
 
-    var redis = redisurl.connect(connectionString);
+    //var redis = redisurl.connect(connectionString);
+    var redis = redis.createClient(process.env.WERCKER_REDIS_HOST, process.env.WERCKER_REDIS_PORT);
     redis.sadd('decepticons', 'megatron');
     redis.sadd('decepticons', 'shockwave');
     redis.sadd('decepticons', 'astrotrain');
