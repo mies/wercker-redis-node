@@ -1,4 +1,4 @@
-var redis = require('redis-url')
+var redis = require('redis')
   , should = require('should');
 
 
